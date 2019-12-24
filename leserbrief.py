@@ -54,14 +54,14 @@ class Leserbrief:
 
 
     def remove_tags(self, text_str):
-        buffer = text_str.replace("<div class=\"text\" id=\"body_divText\"><p>","")
-        buffer = buffer.replace("<div id=\"body_divInfo\">","")
-        buffer = buffer.replace("<p>","")
-        buffer = buffer.replace("</p>","")
-        buffer = buffer.replace("<br/>","")
-        buffer = buffer.replace("</div>","")
-        buffer = buffer.replace("<h1 id=\"body_hTitel\">","")
-        return buffer.replace("</h1>","")
+        buffer = text_str.replace("<div class=\"text\" id=\"body_divText\"><p>"," ")
+        buffer = buffer.replace("<div id=\"body_divInfo\">"," ")
+        buffer = buffer.replace("<p>"," ")
+        buffer = buffer.replace("</p>"," ")
+        buffer = buffer.replace("<br/>"," ")
+        buffer = buffer.replace("</div>"," ")
+        buffer = buffer.replace("<h1 id=\"body_hTitel\">"," ")
+        return buffer.replace("</h1>"," ")
 
 
     def __str__(self):
