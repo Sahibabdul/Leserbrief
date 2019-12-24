@@ -13,11 +13,11 @@ title.close()
 
 base_url = "https://www.volksblatt.li/Leserbriefe"
 amount_of_letters = 647505
-newest_letter_id = 647505
 list_of_letters=[]
 blacklist = open("blacklist.txt","r")
 list_black = set(blacklist.read().split())
 blacklist.close()
+newest_letter_id = list_black[-1]
 
 
 #--------Creator--------
