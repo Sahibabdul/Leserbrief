@@ -20,7 +20,6 @@ with open("text.txt","a") as text:
         if i < lower_bound:
             exit()
         letter = Leserbrief(i)
-        print(letter.id)
         if letter.get_text()=="Error":
             print("Fail " + letter.id)
         else:
