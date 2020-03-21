@@ -3,6 +3,7 @@ import os
 
 base_url = "https://www.volksblatt.li/Leserbriefe"
 amount_of_letters = 653371
+lower_bound = 647504
 list_of_letters=[]
 with open("text.txt","r") as articles:
     list_articles = articles.read().split("\n")
@@ -16,6 +17,8 @@ for article in reversed(list_articles):
 #--------Creator--------
 with open("text.txt","a") as text:
     for i in reversed(range(newest_letter_id)):
+        if i < lower_bound:
+            exit()
         letter = Leserbrief(i)
         print(letter.id)
         if letter.get_text()=="Error":
