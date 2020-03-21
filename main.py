@@ -22,7 +22,7 @@ with open("text.txt","a") as text:
         letter = Leserbrief(i)
         print(letter.id)
         if letter.get_text()=="Error":
-            print("Fail")
+            print("Fail " + letter.id)
         else:
             text.write( letter.id+" --- "+letter.get_title() + " --- "+ letter.get_creator()+" --- "+ letter.get_text()+"\n")
-            print("Success")
+            print("Success " + letter.id)
