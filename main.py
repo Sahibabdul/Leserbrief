@@ -2,7 +2,7 @@ from leserbrief import Leserbrief
 import os
 
 base_url = "https://www.volksblatt.li/Leserbriefe"
-amount_of_letters = 647505
+amount_of_letters = 653371
 list_of_letters=[]
 with open("text.txt","r") as articles:
     list_articles = articles.read().split("\n")
