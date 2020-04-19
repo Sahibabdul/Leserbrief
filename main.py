@@ -39,3 +39,4 @@ with open("text.txt","a") as text:
             text.write( letter.id+" --- "+letter.get_title() + " --- "+ letter.get_creator()+" --- "+ letter.get_text()+"\n")
             logging.info("")
             print("Done with: "+str(letter.id))
+Print("done")
