@@ -3,13 +3,13 @@ import os
 import logging
 
 #Logging Config. 
-logging.basicConfig(filename='debug.log', format='%(levelname)s:%(message)s | %(asctime)s',level=logging.DEBUG)
+logging.basicConfig(filename='debug.log', format='%(levelname)s | %(asctime)s:%(message)s',level=logging.DEBUG)
 
 #Analyze Config
 #Base URL atm it only works for this website but the Code could be adapted to other sites
 base_url = "https://www.volksblatt.li/Leserbriefe"
 #Bounds for Letters to analyze
-amount_of_letters = 653280
+amount_of_letters = 654932
 lower_bound = 647504
 logging.info("Upper bound:" +str(amount_of_letters)+" Lower bound:"+str(lower_bound))
 list_of_letters=[]
