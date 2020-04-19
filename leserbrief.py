@@ -2,6 +2,7 @@ from urllib.request import urlopen
 from html.parser import HTMLParser
 from urllib import parse
 from bs4 import BeautifulSoup
+import logging
 
 class Leserbrief:
     url = "https://www.volksblatt.li/Leserbriefe/"
