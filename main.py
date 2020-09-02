@@ -9,8 +9,9 @@ logging.basicConfig(filename='debug.log', format='%(levelname)s | %(asctime)s:%(
 #Base URL atm it only works for this website but the Code could be adapted to other sites
 base_url = "https://www.volksblatt.li/Leserbriefe"
 #Bounds for Letters to analyze
-amount_of_letters = 654932
-lower_bound = 647504
+amount_of_letters = 663621
+lower_bound = 654932
+print("starting now")
 logging.info("Upper bound:" +str(amount_of_letters)+" Lower bound:"+str(lower_bound))
 list_of_letters=[]
 #Looking at all letters already looked at
