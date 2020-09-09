@@ -23,7 +23,7 @@ base_id = str(soup.find(id="body_repLeserbriefe_aLink_0")).split("/")[2]
 print(base_id)
 
 #Bounds for Letters to analyze
-amount_of_letters = base_id
+amount_of_letters = int(base_id)
 lower_bound = 663620
 print("starting now")
 logging.info("Upper bound:" +str(amount_of_letters)+" Lower bound:"+str(lower_bound))
@@ -43,7 +43,7 @@ logging.info("Newest Letter id: "+str(newest_letter_id))
 #Writing it to the output file text.txt
 with open("text.txt","a") as text:
     #Going from upperbound to Lower Bound
-    for i in reversed(range(newest_letter_id)):
+    for i in reversed(range(newest_letter_id+1)):
         if i < lower_bound:
             logging.debug("Exited with: "+str(i))
             exit()
