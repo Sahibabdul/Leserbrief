@@ -1,4 +1,10 @@
 from leserbrief import Leserbrief
+
+from urllib.request import urlopen
+from html.parser import HTMLParser
+from urllib import parse
+from bs4 import BeautifulSoup
+import logging
 import os
 import logging
 
@@ -8,6 +14,14 @@ logging.basicConfig(filename='debug.log', format='%(levelname)s | %(asctime)s:%(
 #Analyze Config
 #Base URL atm it only works for this website but the Code could be adapted to other sites
 base_url = "https://www.volksblatt.li/Leserbriefe"
+
+starting_page = urlopen(base_url)
+if 'text/html' in response.getheader('Content-Type'):
+    html_bytes = response.read()
+    html_string = html_bytes.decode("utf-8")
+soup = BeautifulSoup(html_string, features="html.parser")
+base_id = str(soup.find({"id": "body_repLeserbriefe_aLink_0"}))
+
 #Bounds for Letters to analyze
 amount_of_letters = 663621
 lower_bound = 654932
