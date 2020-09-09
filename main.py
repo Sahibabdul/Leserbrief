@@ -22,6 +22,7 @@ if 'text/html' in response.getheader('Content-Type'):
     html_string = html_bytes.decode("utf-8")
 soup = BeautifulSoup(html_string, features="html.parser")
 base_id = str(soup.find({"id": "body_repLeserbriefe_aLink_0"}))
+print(base_id)
 
 #Bounds for Letters to analyze
 amount_of_letters = 663621
