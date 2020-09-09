@@ -16,7 +16,7 @@ logging.basicConfig(filename='debug.log', format='%(levelname)s | %(asctime)s:%(
 base_url = "https://www.volksblatt.li/Leserbriefe"
 
 starting_page = urlopen(base_url)
-response = urlopen(self.url)
+response = urlopen(base_url)
 if 'text/html' in response.getheader('Content-Type'):
     html_bytes = response.read()
     html_string = html_bytes.decode("utf-8")
