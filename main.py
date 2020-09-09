@@ -19,12 +19,12 @@ response = urlopen(base_url)
 html = response.read()
 html_string = html.decode("utf-8")
 soup = BeautifulSoup(html_string, features="html.parser")
-base_id = str(soup.find(id="body_repLeserbriefe_aLink_0"))
+base_id = str(soup.find(id="body_repLeserbriefe_aLink_0")).split("/")[2]
 print(base_id)
 
 #Bounds for Letters to analyze
-amount_of_letters = 663621
-lower_bound = 654932
+amount_of_letters = base_id
+lower_bound = 663620
 print("starting now")
 logging.info("Upper bound:" +str(amount_of_letters)+" Lower bound:"+str(lower_bound))
 list_of_letters=[]
