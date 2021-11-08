@@ -41,6 +41,7 @@ logging.info("Newest Letter id: "+str(newest_letter_id))
 #--------Creator--------
 #Actually Getting the letters from the site
 #Writing it to the output file text.txt
+nothing_found = []
 with open("text.txt","a") as text:
     #Going from upperbound to Lower Bound
     for i in reversed(range(newest_letter_id+1)):
@@ -49,8 +50,10 @@ with open("text.txt","a") as text:
             exit()
         letter = Leserbrief(i)
         if letter.get_text()=="Error":
-            logging.debug("Letter not available at: "+str(letter.id)+" | did not get any text")
+            nothing_found.append(letter.id)
         else:
+            logging.debug("Letter not available at: "+str(nothing_found)+" | did not get any text")
+            nothing_found = []
             text.write( letter.id+" --- "+letter.get_title() + " --- "+ letter.get_creator()+" --- "+ letter.get_text()+"\n")
             logging.info("Letter ID found:"+str(letter.id)+" | Text: "+str(letter.get_text()))
 print("done")
