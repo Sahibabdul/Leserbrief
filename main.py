@@ -24,7 +24,7 @@ print(base_id)
 
 #Bounds for Letters to analyze
 amount_of_letters = int(base_id)
-lower_bound = 663620
+lower_bound = 674399
 print("starting now")
 logging.info("Upper bound:" +str(amount_of_letters)+" Lower bound:"+str(lower_bound))
 list_of_letters=[]
@@ -52,6 +52,5 @@ with open("text.txt","a") as text:
             logging.debug("Letter not available at: "+str(letter.id)+" | did not get any text")
         else:
             text.write( letter.id+" --- "+letter.get_title() + " --- "+ letter.get_creator()+" --- "+ letter.get_text()+"\n")
-            logging.info("")
-            print("Done with: "+str(letter.id))
-Print("done")
+            logging.info("Letter ID found:"+str(letter.id)+" | Text: "+str(letter.get_text()))
+print("done")
