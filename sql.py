@@ -1,6 +1,6 @@
 import os
 
-with open("text08-11-2021.txt","r",encoding="UTF-8") as input:
+with open("text030622.txt","r",encoding="UTF-8") as input:
     leserbriefe = input.read().split("\n")
 
 with open("out_sql.txt","w",encoding="UTF-8") as out:

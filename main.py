@@ -24,18 +24,19 @@ print(base_id)
 
 #Bounds for Letters to analyze
 amount_of_letters = int(base_id)
-lower_bound = 693552
+lower_bound = 693458
 print("starting now")
 logging.info("Upper bound:" +str(amount_of_letters)+" Lower bound:"+str(lower_bound))
 list_of_letters=[]
 #Looking at all letters already looked at
-with open("text.txt","r") as articles:
+'''with open("text.txt","r") as articles:
     list_articles = articles.read().split("\n")
 newest_letter_id = amount_of_letters
 for article in reversed(list_articles):
     if " --- " in article:
         newest_letter_id = int(article.split(" --- ")[0])
-        break
+        break'''
+newest_letter_id = 707656
 logging.info("Newest Letter id: "+str(newest_letter_id))
 
 #--------Creator--------

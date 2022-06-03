@@ -55,8 +55,13 @@ for letter in letters.values():
         out.append(item[0])
     letter.setKeywords(out)
 
-
+'''
 for key in letters.keys():
     with open("keywords/"+str(letters[key].getAuthor().replace("/", ""))+".txt", "w", encoding="utf-8") as writer:
         letter = letters[key]
+        writer.write("Author: " + str(letter.getAuthor()) + " | IDs: " + str(letter.getID()) +  " | keywords: " + str(letter.getKeywords()) + "\n")
+'''
+
+with open("keywords.txt", "w", encoding="utf-8") as writer:
+    for letter in letters:
         writer.write("Author: " + str(letter.getAuthor()) + " | IDs: " + str(letter.getID()) +  " | keywords: " + str(letter.getKeywords()) + "\n")
