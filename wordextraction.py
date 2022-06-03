@@ -49,7 +49,11 @@ counter = 0
 for letter in letters.values():
     print(str(counter))
     counter += 1
-    letter.setKeywords(rake.apply(letter.getText()))
+    buffer = rake.apply(letter.getText())
+    out = []
+    for item in buffer:
+        out.append(item[0])
+    letter.setKeywords(out)
 
 
 
