@@ -1,3 +1,4 @@
+import os
 from multi_rake import Rake
 import csv
 
@@ -34,20 +35,28 @@ class Letter:
 letters = {}
 authors = []
 
-with open("ovezulax_Leserbriefe.csv", "r", encoding="utf-8") as reader:
+with open("ovezulax_Leserbriefe030622.csv", "r", encoding="utf-8") as reader:
     csv_reader = csv.reader(reader)
     for row in csv_reader:
-        if row[2].split(",")[0].replace(" ", "") in authors:
-            letters[row[2].split(",")[0].replace(" ", "")].appendText(row[4], row[0])
+        auth = row[2].split(",")[0].replace("*", "Star")
+        while auth.startswith(" "):
+            auth = auth [1:]
+        for writ in authors:
+            if auth.startswith(writ) and len(auth) > 5 and writ != "":
+                auth = writ
+                break
+        if auth in authors:
+            letters[auth].appendText(row[4], row[0])
         else:   
-            authors.append(row[2].split(",")[0].replace(" ", ""))
-            letters[row[2].split(",")[0].replace(" ", "")] = Letter(row[2].split(",")[0].replace(" ", ""), row[0], row[4])
+            authors.append(auth)
+            letters[auth] = Letter(auth, row[0], row[4])
+
+
 
 rake = Rake()
 
 counter = 0
 for letter in letters.values():
-    print(str(counter))
     counter += 1
     buffer = rake.apply(letter.getText())
     out = []
@@ -55,13 +64,19 @@ for letter in letters.values():
         out.append(item[0])
     letter.setKeywords(out)
 
-'''
+
 for key in letters.keys():
-    with open("keywords/"+str(letters[key].getAuthor().replace("/", ""))+".txt", "w", encoding="utf-8") as writer:
-        letter = letters[key]
-        writer.write("Author: " + str(letter.getAuthor()) + " | IDs: " + str(letter.getID()) +  " | keywords: " + str(letter.getKeywords()) + "\n")
-'''
+    print(str(letters[key].getAuthor()))
+    if len(str(letters[key].getAuthor())) == 0:
+        with open("keywords/" + "Letter " + " s/" + str(letters[key].getAuthor().replace("/", "")) + ".txt", "w", encoding="utf-8") as writer:
+            letter = letters[key]
+            writer.write("Author: " + str(letter.getAuthor()) + " | IDs: " + str(letter.getID()) +  " | keywords: " + str(letter.getKeywords()) + "\n")
+
+    else:    
+        with open("keywords/"+ "Letter " + str(letters[key].getAuthor().replace("/", ""))[0].lower() +" s/"+str(letters[key].getAuthor().replace("/", ""))+".txt", "w", encoding="utf-8") as writer:
+            letter = letters[key]
+            writer.write("Author: " + str(letter.getAuthor()) + " | IDs: " + str(letter.getID()) +  " | keywords: " + str(letter.getKeywords()) + "\n")
 
 with open("keywords.txt", "w", encoding="utf-8") as writer:
-    for letter in letters:
-        writer.write("Author: " + str(letter.getAuthor()) + " | IDs: " + str(letter.getID()) +  " | keywords: " + str(letter.getKeywords()) + "\n")
+    for letter in letters.values():
+        writer.write("Author: " + str(letter.getAuthor()) + " | IDs: " + str(letter.getID()) +  " | keywords: " + str(letter.getKeywords()[:20]) + "\n")
