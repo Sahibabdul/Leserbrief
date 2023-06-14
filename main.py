@@ -24,7 +24,7 @@ print(base_id)
 
 #Bounds for Letters to analyze
 amount_of_letters = int(base_id)
-lower_bound = 704072 
+lower_bound = 707656 
 print("starting now")
 logging.info("Upper bound:" +str(amount_of_letters)+" Lower bound:"+str(lower_bound))
 list_of_letters=[]
@@ -36,7 +36,7 @@ for article in reversed(list_articles):
     if " --- " in article:
         newest_letter_id = int(article.split(" --- ")[0])
         break'''
-newest_letter_id = 707656
+newest_letter_id = 725997
 logging.info("Newest Letter id: "+str(newest_letter_id))
 
 #--------Creator--------
@@ -52,9 +52,11 @@ with open("text.txt","a") as text:
         letter = Leserbrief(i)
         if letter.get_text()=="Error":
             nothing_found.append(letter.id)
+            print("not found: "+letter.id)
         else:
             logging.debug("Letter not available at: "+str(nothing_found)+" | did not get any text")
             nothing_found = []
             text.write( letter.id+" --- "+letter.get_title() + " --- "+ letter.get_creator()+" --- "+ letter.get_text()+"\n")
             logging.info("Letter ID found:"+str(letter.id)+" | Text: "+str(letter.get_text()))
+            print("found: "+letter.id)
 print("done")
